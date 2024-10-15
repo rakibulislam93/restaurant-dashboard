@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Product</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css">
+    <script src="https://kit.fontawesome.com/ae360af17e.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <aside id="sidebar" class="js-sidebar">
+            <!-- Content For Sidebar -->
+            <div class="h-100">
+                <div class="sidebar-logo">
+                    <a href="#">SoftVenture</a>
+                </div>
+                <ul class="sidebar-nav">
+                    <li class="sidebar-header">
+                        Admin Elements
+                    </li>
+                    <li class="sidebar-item ">
+                        <a href="index.html" class="sidebar-link">
+                            <i class="bi bi-display"></i>
+                            Dashboard
+                        </a>
+                    </li>
+                    <li class="sidebar-item ">
+                        <a href="#" class="sidebar-link collapsed" data-bs-target="#pages" data-bs-toggle="collapse"
+                            aria-expanded="false"><i class="bi bi-bag-check-fill"></i>
+                            Products
+                        </a>
+                        <ul id="pages" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                            <li class="sidebar-item">
+                                <a href="products.html" class="sidebar-link">All Products</a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a href="add_product.html" class="sidebar-link">Add New Product</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="sidebar-item ">
+                        <a href="#" class="sidebar-link collapsed" data-bs-target="#posts" data-bs-toggle="collapse"
+                            aria-expanded="false"><i class="bi bi-cart"></i>
+                            Sell
+                        </a>
+                        <ul id="posts" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                            <li class="sidebar-item">
+                                <a href="all_sell.html" class="sidebar-link">All Sell</a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a href="add_sell.html" class="sidebar-link">Add New Sell</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="sidebar-item ">
+                        <a href="manage_app_user.html" class="sidebar-link">
+                            <i class="bi bi-gear-wide-connected"></i>
+                            Manage App Users
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item ">
+                        <a href="#" class="sidebar-link collapsed" data-bs-target="#pass" data-bs-toggle="collapse"
+                            aria-expanded="false"><i class="bi bi-gear"></i>
+                            Settings
+                        </a>
+                        <ul id="pass" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                            <li class="sidebar-item">
+                                <a href="password_change.html" class="sidebar-link">Changes Password</a>
+                            </li>
+                            
+                        </ul>
+                    </li>
+
+                    <li class="sidebar-item ">
+                        <a href="#" class="sidebar-link" onclick="UserLogout()">
+                            <i class="bi bi-box-arrow-in-left"></i>
+                            Logout
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </aside>
+        <div class="main">
+            <nav class="navbar navbar-expand px-3 border-bottom">
+                <button class="btn" id="sidebar-toggle" type="button">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </nav>
+
+            <main class="content px-3 py-2">
+                <div class="col-md d-flex justify-content-lg-start justify-content-center">
+                    
+                    <h4 class="mt-2">All Products</h4><br>
+                    
+                </div>
+                <div class="w-100 gap-3 p-2 text-end text-md-end text-center d-md-flex justify-content-md-end justify-content-center">
+                    <input id="search" type="text" class="mb-2 mb-md-0">
+                    <button type="submit" class="btn btn-warning" onclick="getSearchValue()">Search</button>
+                </div>
+
+                <h6 id="product_count" class="text-center" style="font-style: italic; color:rgb(152, 54, 190)"></h6>
+
+               
+                
+                <!-- ************* all product show this container ********** -->
+                <div id="product_container" class="col-md product-container mt-5  d-flex flex-wrap gap-3 justify-content-lg-start justify-content-center">
+                   <!-- all product show here  -->
+                </div>
+                    
+                <!-- ***************** Details Modal Dekhabo ***************** -->
+                <div id="product_modal" class="modal" tabindex="-1">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <h6 id="product_deleteError" class="p-2"></h6>
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="modal-title"></h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                          
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                          <button type="button" class="btn btn-primary" id="editButton">Edit</button>
+                          <button type="button" class="btn btn-danger" id="deleteButton">Delete</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Edit Product Modal -->
+<div class="modal fade" id="editProductModal" tabindex="-1" aria-labelledby="editProductModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="editProductModalLabel">Edit Product</h1>
+          
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <!-- Form to edit product details -->
+          <form id="editProductForm" novalidate>
+            <div class="mb-3">
+              <label for="productName" class="form-label">Product Name</label>
+              <input type="text" class="form-control" id="productName" required>
+            </div>
+            <div class="mb-3">
+              <label for="productPrice" class="form-label">Price</label>
+              <input type="number" class="form-control" id="productPrice" required>
+            </div>
+            <div class="mb-3">
+                <label for="productImage" class="form-label">Image</label>
+                <input type="file" class="form-control" id="productImage" required>
+            </div>
+            <input type="hidden" id="productId"> <!-- For holding the product ID -->
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary" id="saveChangesBtn">Save Changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+   <!-- ************* Product delete korar somoi akta modal dekhabo *********** -->
+   <div id="productDelete_modal" class="modal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title"></h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="">
+          <h5 id="productDeletebody" class="p-2 text-danger">Are you sure delete this product.?</h5>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          
+          <button type="button" class="btn btn-danger" id="productDelbtn">Confirm Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+                
+            </main>
+            <a href="#" class="theme-toggle">
+                <i class="fa-regular fa-moon"></i>
+                <i class="fa-regular fa-sun"></i>
+            </a>
+            <footer class="footer">
+                <div class="container-fluid">
+                    <div class="row text-muted">
+                        <div class="col-6 text-start">
+                            <p class="mb-0">
+                                <a href="#" class="text-muted">
+                                    <strong>SoftVenture</strong>
+                                </a>
+                            </p>
+                        </div>
+                        <div class="col-6 text-end">
+                            <ul class="list-inline">
+                                <li class="list-inline-item">
+                                    <a href="#" class="text-muted">Contact</a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="#" class="text-muted">About Us</a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="#" class="text-muted">Terms</a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="#" class="text-muted">Booking</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="app.js"></script>
+    <script src="product.js"></script>
+</body>
+
+</html>

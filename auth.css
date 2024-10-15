@@ -1,0 +1,90 @@
+
+.login-container {
+    padding-top: 40px;
+    text-align: center;
+    
+}
+
+.login-box{
+    width:50%;
+    padding: 10px;
+    border-radius: 7px;
+    border: none;
+    background-color: aliceblue;
+    color: black;
+}
+
+@media (max-width: 576px) {
+    .login-box {
+        width: 100%;
+    }
+}
+
+
+/* ************* password change contianer *************** */
+
+.password_change_container{
+    width: 80%;
+}
+.pass_changeForm{
+    width: 75%;
+    padding: 10px;
+    
+    
+}
+.pass_changeForm input{
+    padding: 10px;
+    width: 50%;
+    border-radius: 7px;
+    border: none;
+    background-color:white;
+    color: black;
+}
+.pass_changeForm button{
+    padding: 10px;
+    width: 50%;
+    border-radius: 7px;
+    border: none;
+    background-color:rgb(86, 228, 117);
+    color: black;
+}
+@media (max-width: 576px) {
+    .pass_changeForm input{
+        width: 100%;
+    }
+    .pass_changeForm button {
+        width: 100%;
+    }
+}
+
+
+/* ***************** Manage user er kaj start ****************** */
+@media (max-width: 768px) {
+    .AppUserBody {
+        overflow-x: auto; /* Makes the table scrollable on small devices */
+    }
+
+    table{
+        width: 100%; /* Ensures the table fits within the parent container */
+    }
+}
+
+.add_app_userForm{
+    width: 75%;
+}
+
+
+.app_input_field{
+    width: 50%;
+    padding: 10px;
+    border: none;
+    background-color: white;
+    border-radius: 7px;
+    color: black;
+}
+@media (max-width: 576px) {
+    .app_input_field{
+        width: 100%;
+    }
+    
+}

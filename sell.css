@@ -1,0 +1,64 @@
+
+/* ********* small device er jonno table scrollable korlam ***************** */
+@media (max-width: 768px) {
+    .card-body {
+        overflow-x: auto; /* Makes the table scrollable on small devices */
+    }
+
+    table{
+        width: 100%; /* Ensures the table fits within the parent container */
+    }
+}
+
+
+
+.add_sell_container{
+    height: 100vh;
+    
+}
+.addSellForm{
+    width: 75%;
+    padding: 30px;
+    background-color: white;
+    
+    padding-bottom:70px;
+    border-radius: 10px;
+}
+.add-sell-box{
+    width:70%;
+    padding: 10px;
+    border-radius: 7px;
+    border: none;
+    background-color:rgb(189, 214, 236);
+    color: black;
+}
+.add-sell-btn{
+    width: 75%;
+    padding: 10px;
+    border-radius: 4px;
+    border: none;
+    background-color: black;
+    color: white;
+}
+
+.sell-errors{
+    width: 70%;
+    padding:20px;
+    border: none;
+    background-color: rgb(233, 209, 209);
+    border-radius: 7px;
+    display: none;
+    
+}
+
+/* **************** Date diye sell date gulake filter korbo ***************** */
+input[type="date"] {
+
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 0.25rem;
+    border: 1px solid #ced4da;
+    background-color: #f8f9fa;
+    cursor: pointer;
+}

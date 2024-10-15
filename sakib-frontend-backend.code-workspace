@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "../../shop"
+		},
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "shop Frontend"
+	}
+}
